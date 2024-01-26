@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class TableQueries {
 
     private static final String SQL_INSERT = "INSERT INTO Person(age,salary,passport,adress,dateOfBirthday,dateTimeCreate,timeToLunch,letter) VALUES(?,?,?,?,?,?,?,?)";
-    private static final String SORT_BY_AGE = "SELECT * FROM Person WHERE age>21 ORDER BY dateTimeCreate";
+    private static final String SORT_BY_AGE = "SELECT * from Person WHERE age>21 ORDER BY dateTimeCreate";
 
     public static void insert(Connection connection, Person person) throws SQLException {
         try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT)){
