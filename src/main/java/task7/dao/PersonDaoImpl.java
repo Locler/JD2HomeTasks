@@ -1,7 +1,7 @@
 package task7.dao;
 
+import task7.connection.JDBCConnector;
 import task7.entity.Person;
-import task7.connection.JDBC;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,21 +18,15 @@ public class PersonDaoImpl implements PersonDAO {
     public static final String SQL_SELECT_ALL = "SELECT * FROM Person";
 
     @Override
-    public void save(Person person) {
+    public Person save(Person person) {
         quieryMethod(person, SQL_SAVE);
+        return person;
     }
 
     @Override
     public void update(Person person, int id) {
-        try (Connection connection = JDBC.connect(); PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE)) {
-            preparedStatement.setInt(1, person.getAge());
-            preparedStatement.setFloat(2, person.getSalary());
-            preparedStatement.setString(3, person.getPassport());
-            preparedStatement.setString(4, person.getAdress());
-            preparedStatement.setDate(5, person.getDateOfBirthday());
-            preparedStatement.setTimestamp(6, person.getDateTimeCreate());
-            preparedStatement.setTime(7, person.getTimeToLunch());
-            preparedStatement.setString(8, person.getLetter());
+        try (Connection connection = JDBCConnector.connect(); PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE)) {
+            setPersonStatement(person, preparedStatement);
             preparedStatement.setInt(9, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -41,25 +35,29 @@ public class PersonDaoImpl implements PersonDAO {
     }
 
     private static void quieryMethod(Person person, String quiery) {
-        try (Connection connection = JDBC.connect(); PreparedStatement preparedStatement = connection.prepareStatement(quiery)) {
-            preparedStatement.setInt(1, person.getAge());
-            preparedStatement.setFloat(2, person.getSalary());
-            preparedStatement.setString(3, person.getPassport());
-            preparedStatement.setString(4, person.getAdress());
-            preparedStatement.setDate(5, person.getDateOfBirthday());
-            preparedStatement.setTimestamp(6, person.getDateTimeCreate());
-            preparedStatement.setTime(7, person.getTimeToLunch());
-            preparedStatement.setString(8, person.getLetter());
+        try (Connection connection = JDBCConnector.connect(); PreparedStatement preparedStatement = connection.prepareStatement(quiery)) {
+            setPersonStatement(person, preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    private static void setPersonStatement(Person person, PreparedStatement preparedStatement) throws SQLException {
+        preparedStatement.setInt(1, person.getAge());
+        preparedStatement.setFloat(2, person.getSalary());
+        preparedStatement.setString(3, person.getPassport());
+        preparedStatement.setString(4, person.getAdress());
+        preparedStatement.setDate(5, person.getDateOfBirthday());
+        preparedStatement.setTimestamp(6, person.getDateTimeCreate());
+        preparedStatement.setTime(7, person.getTimeToLunch());
+        preparedStatement.setString(8, person.getLetter());
+    }
+
     @Override
     public void delete(int id) {
-        try (Connection connection = JDBC.connect(); PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE)) {
-            preparedStatement.setInt(1,id);
+        try (Connection connection = JDBCConnector.connect(); PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE)) {
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -81,7 +79,8 @@ public class PersonDaoImpl implements PersonDAO {
 
     @Override
     public Person getById(int id) {
-        try (Connection connection = JDBC.connect(); PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_BY_ID)) {
+        try (Connection connection = JDBCConnector.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_BY_ID)) {
             preparedStatement.setInt(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 return resultSet.next() ? buildPerson(resultSet) : null;
@@ -96,9 +95,9 @@ public class PersonDaoImpl implements PersonDAO {
     @Override
     public List<Person> getAll() {
         List<Person> personList = new ArrayList<>();
-        try (Connection connection = JDBC.connect(); PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_ALL)) {
-            try (ResultSet resultSet=preparedStatement.executeQuery()){
-                while (resultSet.next()){
+        try (Connection connection = JDBCConnector.connect(); PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_ALL)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
                     personList.add(buildPerson(resultSet));
                 }
             }

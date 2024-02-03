@@ -1,9 +1,7 @@
 package task7;
 
-import task7.connection.JDBC;
 import task7.dao.PersonDaoImpl;
 import task7.entity.Person;
-import task7.metaDate.MetaDate;
 
 import java.sql.*;
 import java.util.List;
@@ -15,11 +13,9 @@ public class Runner {
         PersonDaoImpl personDao = new PersonDaoImpl();
         personDao.save(person);
         List<Person> personList = personDao.getAll();
-        for (Person p : personList) {
-            System.out.println(p);
-        }
+        personList.forEach(System.out::println);
         System.out.println(personDao.getById(26));
         personDao.delete(26);
-        personDao.update(person,27);
+        personDao.update(person, 27);
     }
 }

@@ -5,6 +5,7 @@ import lombok.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+
 @Builder
 @ToString
 @Getter
@@ -12,6 +13,7 @@ import java.sql.Timestamp;
 @EqualsAndHashCode
 @AllArgsConstructor
 public class Person {
+    private int id;
     private int age;
     private float salary;
     private String passport;
@@ -20,4 +22,15 @@ public class Person {
     private Timestamp dateTimeCreate;
     private Time timeToLunch;
     private String letter;
+
+    public Person(int age, float salary, String passport, String adress, Date dateOfBirthday, Timestamp dateTimeCreate, Time timeToLunch, String letter) {
+        this.age = age;
+        this.salary = salary;
+        this.passport = passport;
+        this.adress = adress;
+        this.dateOfBirthday = dateOfBirthday;
+        this.dateTimeCreate = dateTimeCreate;
+        this.timeToLunch = timeToLunch;
+        this.letter = letter;
+    }
 }
