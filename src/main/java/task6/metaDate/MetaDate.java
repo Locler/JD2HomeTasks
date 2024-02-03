@@ -22,6 +22,5 @@ public class MetaDate {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
