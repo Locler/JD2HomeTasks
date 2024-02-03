@@ -1,6 +1,5 @@
 package task6;
 
-import task6.connection.DatabaseSettings;
 import task6.connection.JdbcConnection;
 import task6.entity.Person;
 import task6.metaDate.MetaDate;
