@@ -2,10 +2,16 @@
 <databaseChangeLog
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
-    <changeSet author="spartak" id="address-1">
-        <createTable tableName="People" >
+    <changeSet author="spartak" id="people-2">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="People"/>
+            </not>
+        </preConditions>
+        <createTable tableName="People">
             <column name="id" type="int" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" unique="true"/>
             </column>
