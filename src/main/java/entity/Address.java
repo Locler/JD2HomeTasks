@@ -3,6 +3,7 @@ package entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,7 +21,10 @@ public class Address {
     @Column
     private String street;
 
-    @Column(name="house_count")
+    @Column(name = "house_count")
     private int houseCount;
 
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_address",referencedColumnName = "id")
+    private List<People> peopleList;
 }
