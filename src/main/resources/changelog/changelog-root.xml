@@ -4,6 +4,5 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                             https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
-    <include file="changelog/changelog-v1/24.02.24-changelog-create-tables.xml"/>
-
+    <include file="changelog-v1/24.02.24-changelog-create-tables.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

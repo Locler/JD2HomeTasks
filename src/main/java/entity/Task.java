@@ -5,15 +5,13 @@ import lombok.experimental.SuperBuilder;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tasks_br_1")
+@Table(name = "Task")
 @ToString
 @EqualsAndHashCode
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="TASK_TYPE",discriminatorType = DiscriminatorType.CHAR)
-@DiscriminatorValue("T")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Task {
     @Id
     @Column

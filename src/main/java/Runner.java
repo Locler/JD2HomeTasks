@@ -1,30 +1,21 @@
 import entity.Address;
 import entity.HomeTask;
-import entity.WorkTask;
-import impl.HomeTaskDaoImpl;
-import impl.WorkTaskDaoImpl;
-import utils.HibernateUtil;
+import entity.Task;
+import impl.TaskDaoImpl;
+
 
 public class Runner {
     public static void main(String[] args) {
-        HomeTaskDaoImpl homeTaskDao = new HomeTaskDaoImpl();
-        WorkTaskDaoImpl workTaskDao = new WorkTaskDaoImpl();
+        TaskDaoImpl taskDao = new TaskDaoImpl();
         Address address = Address.builder()
-                .city("Misnk")
-                .street("Ivanovka")
+                .city("asdasdad")
+                .street("Asdasdad")
                 .build();
-        HomeTask homeTask = HomeTask.builder()
-                .name("task10")
-                .description("easy")
+        Task task = HomeTask.builder()
+                .description("asdad")
+                .name("adadad")
                 .address(address)
                 .build();
-        WorkTask workTask = WorkTask.builder()
-                .name("task11")
-                .description("hard")
-                .cost(20.505)
-                .build();
-        homeTaskDao.save(homeTask);
-        workTaskDao.save(workTask);
-        HibernateUtil.close();
+        taskDao.save(task);
     }
 }

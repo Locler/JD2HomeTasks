@@ -4,19 +4,9 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                             https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
-    <changeSet id="task10_br1" author="sp">
-        <createTable tableName="tasks_br_1">
-            <column name="TASK_TYPE" type="char(1)"/>
-            <column name="id" type="integer" autoIncrement="true">
-                <constraints nullable="false" primaryKey="true" unique="true"/>
-            </column>
-            <column name="name" type="varchar(255)"/>
-            <column name="description" type="varchar(255)"/>
-            <column name="startTime" type="date"/>
-            <column name="endTime" type="date"/>
-            <column name="home_task_city" type="varchar(255)"/>
-            <column name="home_task_street" type="varchar(255)"/>
-            <column name="cost" type="double"/>
-        </createTable>
-    </changeSet>
+    <include file="24.02.24-changelog-create-task.xml" relativeToChangelogFile="true"/>
+    <include file="24.02.24-changelog-create-worktask.xml" relativeToChangelogFile="true"/>
+    <include file="24.02.24-changelog-create-hometask.xml" relativeToChangelogFile="true"/>
+    <include file="24.02.24-changelog-foreignKey-hometask.xml" relativeToChangelogFile="true"/>
+    <include file="24.02.24-changelog-foreignKey-worktask.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
