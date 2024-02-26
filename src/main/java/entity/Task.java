@@ -1,13 +1,14 @@
 package entity;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "tasks_br_1")
 @ToString
 @EqualsAndHashCode
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -17,7 +18,7 @@ public class Task {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @Column
     private String name;
     @Column

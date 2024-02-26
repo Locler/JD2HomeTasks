@@ -4,17 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
-@Table
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@SuperBuilder
 @EqualsAndHashCode(callSuper = false)
 @DiscriminatorValue("W")
 public class WorkTask extends Task{

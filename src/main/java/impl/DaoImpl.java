@@ -9,13 +9,12 @@ public abstract class DaoImpl<T> implements DAO<T> {
     protected abstract Class<T> getCl();
 
     @Override
-    public T save(T t) {
+    public void save(T t) {
         EntityManager entityManager = HibernateUtil.getEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(t);
         entityManager.getTransaction().commit();
         entityManager.close();
-        return t;
     }
 
     @Override
