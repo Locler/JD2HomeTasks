@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+    <changeSet id="task10_br3_homeTask" author="sp">
+        <createTable tableName="HomeTask_br3">
+            <column name="task_id" type="integer" autoIncrement="false">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="startTime" type="date"/>
+            <column name="endTime" type="date"/>
+            <column name="home_task_city" type="varchar(255)"/>
+            <column name="home_task_street" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
