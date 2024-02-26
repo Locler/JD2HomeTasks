@@ -4,8 +4,8 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                             https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
-    <changeSet id="task10_br2_task" author="sp">
-        <createTable tableName="Task">
+    <changeSet id="task10_br3_task" author="sp">
+        <createTable tableName="Task_br3">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" unique="true"/>
             </column>

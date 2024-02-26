@@ -7,6 +7,4 @@
     <include file="24.02.24-changelog-create-task.xml" relativeToChangelogFile="true"/>
     <include file="24.02.24-changelog-create-worktask.xml" relativeToChangelogFile="true"/>
     <include file="24.02.24-changelog-create-hometask.xml" relativeToChangelogFile="true"/>
-    <include file="24.02.24-changelog-foreignKey-hometask.xml" relativeToChangelogFile="true"/>
-    <include file="24.02.24-changelog-foreignKey-worktask.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

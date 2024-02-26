@@ -12,11 +12,10 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 @ToString
 @SuperBuilder
-@Table
+@Table(name = "HomeTask_br3")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@PrimaryKeyJoinColumn(name="task_id")
 public class HomeTask extends Task {
     @Column
     @CreationTimestamp

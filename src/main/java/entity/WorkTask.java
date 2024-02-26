@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table
+@Table(name = "WorkTask_br3")
 @SuperBuilder
 @EqualsAndHashCode(callSuper = false)
 public class WorkTask extends Task{
