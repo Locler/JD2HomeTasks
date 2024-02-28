@@ -1,4 +1,4 @@
-package task6.metaDate;
+package task7.metaDate;
 
 import java.sql.*;
 
