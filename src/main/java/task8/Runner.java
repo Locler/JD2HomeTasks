@@ -16,9 +16,7 @@ public class Runner {
                 .salary(12323f)
                 .letter("sadasd")
                 .adress("gfgfgf")
-                .timeToLunch(Time.valueOf("12:12:12"))
                 .dateOfBirthday(Date.valueOf("1993-12-12"))
-                .dateTimeCreate(Timestamp.valueOf("2004-05-05 19:19:19"))
                 .build();
         PersonDaoImpl personDaoImpl = new PersonDaoImpl();
         personDaoImpl.save(person);

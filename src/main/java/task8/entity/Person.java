@@ -1,11 +1,14 @@
 package task8.entity;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Builder
 @ToString
@@ -32,9 +35,11 @@ public class Person {
     @Column
     private Date dateOfBirthday;
     @Column
-    private Timestamp dateTimeCreate;
+    @CreationTimestamp
+    private LocalDateTime dateTimeCreate;
     @Column
-    private Time timeToLunch;
+    @CreationTimestamp
+    private LocalTime timeToLunch;
     @Column
     private String letter;
 }
